@@ -18,12 +18,16 @@ You can override the following attribute to set what versions of ruby to install
 
 ### tmate
 
-This recipe will install tmate on the machine. A ssh key pair ~/.ssh/id_rsa 
+This recipe will install [tmate](http://tmate.io/) on the machine. A ssh key pair ~/.ssh/id_rsa 
 and ~/.ssh/id_rsa.pub will be generated if they are not there. You can override the following attributes to change the user:
 
    
         override['tools']['tmate']['user']['name'] = 'vagrant'
         override['tools']['tmate']['user']['home'] = '/home/vagrant'
+
+### mountebank
+
+This recipe will install [mountebank](http://www.mbtest.org/)
 
 ## License
 
