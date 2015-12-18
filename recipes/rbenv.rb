@@ -1,5 +1,5 @@
-user_name = node['tools']['rbenv']['user']['name']
-user_home = node['tools']['rbenv']['user']['home']
+user_name = node['tools']['user']['name']
+user_home = node['tools']['user']['home']
 
 execute 'install rbenv' do
   command "git clone https://github.com/sstephenson/rbenv.git #{user_home}/.rbenv"

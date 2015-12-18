@@ -6,8 +6,8 @@ This cookbook includes the following recipes to install some tools on linux mach
 
 By default, this recipe will install rbenv and ruby for user vagrant. You can override the following attribute to change the user:
    
-        override['tools']['rbenv']['user']['name'] = 'vagrant'
-        override['tools']['rbenv']['user']['home'] = '/home/vagrant'
+        override['tools']['user']['name'] = 'vagrant'
+        override['tools']['user']['home'] = '/home/vagrant'
 
 By default, this cookbook will install ruby 2.1.2 and set it as shell version.
 
@@ -22,8 +22,8 @@ This recipe will install [tmate](http://tmate.io/) on the machine. A ssh key pai
 and ~/.ssh/id_rsa.pub will be generated if they are not there. You can override the following attributes to change the user:
 
    
-        override['tools']['tmate']['user']['name'] = 'vagrant'
-        override['tools']['tmate']['user']['home'] = '/home/vagrant'
+        override['tools']['user']['name'] = 'vagrant'
+        override['tools']['user']['home'] = '/home/vagrant'
 
 ### mountebank
 

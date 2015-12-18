@@ -40,14 +40,14 @@ EOH
 end
 
 bash 'install ssh key' do
-  cwd node['tools']['tmate']['user']['home']
-  user node['tools']['tmate']['user']['name']
-  group node['tools']['tmate']['user']['name']
+  cwd node['tools']['user']['home']
+  user node['tools']['user']['name']
+  group node['tools']['user']['name']
   code <<-EOH
 mkdir -p .ssh
 cd .ssh
 ssh-keygen -t rsa -N "" -f id_rsa
   EOH
-  not_if { ::File.exists?("#{node['tools']['tmate']['user']['home']}/.ssh/id_rsa") }
+  not_if { ::File.exists?("#{node['tools']['user']['home']}/.ssh/id_rsa") }
 end
 

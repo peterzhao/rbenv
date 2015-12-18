@@ -1,0 +1,26 @@
+execute pathogen#infect()
+set nocompatible
+syntax on
+filetype plugin indent on
+filetype indent on
+autocmd FileType * set tabstop=2|set shiftwidth=2|set expandtab
+set tabstop=2
+set softtabstop=2
+set expandtab
+set autoindent
+set smartindent
+set number
+set cursorline 
+set showcmd
+set wildmenu
+set showmatch 
+set incsearch
+set hlsearch
+nnoremap <leader><space> :nohlsearch<CR>
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+colorscheme solarized
+
