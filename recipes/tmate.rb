@@ -1,40 +1,13 @@
-%w{ git zlib-devel openssl-devel ncurses-devel cmake ruby libssh-devel wget }.each do |package_name|
-  package package_name
-end
-
-%w{ libevent-devel libevent-doc libevent-headers libevent }.each do |package_name|
-  package package_name do
-    version '1.4.13-4.el6'
-    action :remove
-  end
-end
-
-remote_file "/root/libevent-2.0.21-stable.tar.gz" do
-  source "https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz"
-end
-
-bash 'install libevent2.0.21' do
-  cwd '/root' 
-  code <<-EOH
-tar xf libevent-2.0.21-stable.tar.gz
-cd libevent-2.0.21-stable
-./configure
-make
-make install
-ln -s /usr/local/lib/libevent-2.0.so.5 /usr/lib64/libevent-2.0.so.5
-  EOH
-  not_if { ::File.exists?('/usr/local/lib/libevent-2.0.so.5') }
+remote_file "#{Chef::Config[:file_cache_path]}/tmate-2.2.0-static-linux64.tar.gz" do
+  source "https://github.com/tmate-io/tmate/releases/download/2.2.0/tmate-2.2.0-static-linux64.tar.gz"
+  not_if { ::File.exists?("#{Chef::Config[:file_cache_path]}/tmate-2.2.0-static-linux64.tar.gz") } 
 end
 
 bash 'install tmate' do
-  cwd '/root' 
+  cwd Chef::Config[:file_cache_path]
   code <<-EOH
-git clone https://github.com/nviennot/tmate
-cd tmate
-./autogen.sh
-./configure
-make
-make install
+tar -zxvf tmate-2.2.0-static-linux64.tar.gz
+mv tmate-2.2.0-static-linux64/tmate /usr/local/bin/
 EOH
   not_if { ::File.exists?('/usr/local/bin/tmate') }
 end
