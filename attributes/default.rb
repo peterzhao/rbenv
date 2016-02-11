@@ -10,3 +10,5 @@ default['tools']['vim']['plugins']['vim-endwise'] = 'https://github.com/tpope/vi
 default['tools']['vim']['plugins']['nerdcommenter'] = 'https://github.com/scrooloose/nerdcommenter.git'
 default['tools']['vim']['plugins']['vim-colors-solarized'] = 'https://github.com/altercation/vim-colors-solarized.git'
 default['tools']['vim']['plugins']['vim-vroom'] = 'https://github.com/skalnik/vim-vroom.git'
+default['tools']['tmate']['binary'] = 'tmate-2.2.0-static-linux64'
+default['tools']['tmate']['package'] = 'tmate-2.2.0-static-linux-amd64.tar.gz'

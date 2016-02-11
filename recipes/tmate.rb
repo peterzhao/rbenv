@@ -1,13 +1,13 @@
-remote_file "#{Chef::Config[:file_cache_path]}/tmate-2.2.0-static-linux64.tar.gz" do
-  source "https://github.com/tmate-io/tmate/releases/download/2.2.0/tmate-2.2.0-static-linux64.tar.gz"
-  not_if { ::File.exists?("#{Chef::Config[:file_cache_path]}/tmate-2.2.0-static-linux64.tar.gz") } 
+remote_file "#{Chef::Config[:file_cache_path]}/#{node['tools']['tmate']['package']}" do
+  source "https://github.com/tmate-io/tmate/releases/download/2.2.0/#{node['tools']['tmate']['package']}"
+  not_if { ::File.exists?("#{Chef::Config[:file_cache_path]}/#{node['tools']['tmate']['package']}") } 
 end
 
 bash 'install tmate' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
-tar -zxvf tmate-2.2.0-static-linux64.tar.gz
-mv tmate-2.2.0-static-linux64/tmate /usr/local/bin/
+tar -zxvf #{node['tools']['tmate']['package']} 
+mv #{node['tools']['tmate']['binary']}/tmate /usr/local/bin/
 EOH
   not_if { ::File.exists?('/usr/local/bin/tmate') }
 end
